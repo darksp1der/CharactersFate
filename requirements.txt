@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+pandas
+scikit-learn
+datasets
+transformers
+torch
+evaluate
+openpyxl

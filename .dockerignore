@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# MyPy cache
+.mypy_cache/
+
+# Output and results folders (runtime artifacts)
+output/
+results/
+
+# Jupyter and IPython hidden files
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+
+# Virtual environment (if any)
+venv/
+.env/

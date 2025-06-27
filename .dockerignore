@@ -19,6 +19,5 @@ results/
 venv/
 .env/
 
-squid-game-status-model/
 *.safetensors
 *.csv

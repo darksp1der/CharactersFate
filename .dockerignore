@@ -18,3 +18,7 @@ results/
 # Virtual environment (if any)
 venv/
 .env/
+
+squid-game-status-model/
+*.safetensors
+*.csv

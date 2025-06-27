@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: characters-fate
+  labels:
+    app: characters-fate
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: characters-fate
+  template:
+    metadata:
+      labels:
+        app: characters-fate
+    spec:
+      containers:
+      - name: app
+        image: darksp1der/characters-fate:slim
+        ports:
+        - containerPort: 8000
+        env:
+        - name: OLLAMA_HOST
+          value: http://ollama.default.svc.cluster.local:11434

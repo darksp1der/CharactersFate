@@ -1,0 +1,24 @@
+name: Update Kubernetes Manifests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update image tag
+        run: |
+          sed -i 's|image: .*|image: darksp1der/characters-fate:slim|' k8s/deployment.yaml
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add k8s/deployment.yaml
+          git commit -m "Update image tag"
+          git push

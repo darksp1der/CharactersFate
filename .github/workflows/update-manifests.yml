@@ -1,6 +1,13 @@
 name: Update Kubernetes Manifests
 
 on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Docker image tag (e.g. slim or latest)"
+        required: true
+        default: "slim"
+
   push:
     branches: [ master ]
 
@@ -10,22 +17,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: master
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check if file exists
+      - name: Update image tag in deployment
         run: |
-          test -f k8s/deployment.yaml || (echo "File not found!" && exit 1)
-
-      - name: Update image tag
-        run: |
-          sed -i 's|image: .*|image: darksp1der/characters-fate:slim|' k8s/deployment.yaml
+          sed -i "s|image: darksp1der/characters-fate:.*|image: darksp1der/characters-fate:${{ github.event.inputs.tag || 'slim' }}|" k8s/deployment.yaml
 
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add k8s/deployment.yaml
-          git commit -m "Update image tag" || echo "No changes to commit"
+          git commit -m "Update image tag to ${{ github.event.inputs.tag || 'slim' }}" || echo "No changes to commit"
           git push origin master

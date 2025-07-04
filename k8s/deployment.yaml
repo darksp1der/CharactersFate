@@ -15,10 +15,22 @@ spec:
         app: characters-fate
     spec:
       containers:
-      - name: app
-        image: darksp1der/characters-fate:slim
-        ports:
-        - containerPort: 8000
-        env:
-        - name: OLLAMA_HOST
-          value: http://ollama.default.svc.cluster.local:11434
+        - name: app
+          image: darksp1der/characters-fate:slim
+          ports:
+            - containerPort: 8000
+          env:
+            - name: OLLAMA_HOST
+              value: http://ollama.default.svc.cluster.local:11434
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20

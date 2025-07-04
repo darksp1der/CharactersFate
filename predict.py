@@ -442,18 +442,18 @@ def query_ollama(prompt):
     
     return status, confidence, entropy, margin, logits.tolist()
 
-if __name__ == "__main__":
-    history_text = "Player 456, Seong Gi-hun, was a down-on-his-luck chauffeur who struggled with gambling debts and a broken family. After being invited to play children's games for a large cash prize, he initially hesitated but eventually joined the deadly competition. Throughout the games, Gi-hun displayed a mix of cunning and compassion, forming alliances and making difficult choices to survive. His journey was marked by moments of moral conflict, especially when faced with the harsh realities of the game. Ultimately, Gi-hun's determination and strategic thinking led him to victory, but at a great personal cost."
+#if __name__ == "__main__":
+    # history_text = "Player 456, Seong Gi-hun, was a down-on-his-luck chauffeur who struggled with gambling debts and a broken family. After being invited to play children's games for a large cash prize, he initially hesitated but eventually joined the deadly competition. Throughout the games, Gi-hun displayed a mix of cunning and compassion, forming alliances and making difficult choices to survive. His journey was marked by moments of moral conflict, especially when faced with the harsh realities of the game. Ultimately, Gi-hun's determination and strategic thinking led him to victory, but at a great personal cost."
     
-    status, confidence, entropy, margin, logits = predict_status(history_text)
+    # status, confidence, entropy, margin, logits = predict_status(history_text)
 
-    print(f"\n🧠 Predicted status: {status}")
-    print(f"📊 Confidence: {confidence}")
-    print(f"📈 Entropy: {entropy:.4f}")
-    print(f"📉 Confidence margin: {margin:.4f}")
-    print(f"📤 Raw logits: {logits}")
+    # print(f"\n🧠 Predicted status: {status}")
+    # print(f"📊 Confidence: {confidence}")
+    # print(f"📈 Entropy: {entropy:.4f}")
+    # print(f"📉 Confidence margin: {margin:.4f}")
+    # print(f"📤 Raw logits: {logits}")
     
-    prompt = f"Here is a character history:\n\"{history_text}\"\nBased on this, the model predicted the character is '{status}'. Why would this be the case? Explain in a short paragraph."
+    # prompt = f"Here is a character history:\n\"{history_text}\"\nBased on this, the model predicted the character is '{status}'. Why would this be the case? Explain in a short paragraph."
 
-    explanation = query_ollama(prompt)
-    print(f"\n💡 Reasoning:\n{explanation}")
+    # explanation = query_ollama(prompt)
+    # print(f"\n💡 Reasoning:\n{explanation}")

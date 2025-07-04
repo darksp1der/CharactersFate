@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Character Status Guesser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🔍 Character Status Guesser</h1>
+  <textarea id="history" placeholder="Paste character history here..."></textarea><br>
+  <button id="predict-btn">Guess Status</button>
+  <button id="show-metrics" style="display:none;">📊 Show Metrics</button>
+  <button id="show-reason" style="display:none;">💡 Explain Reasoning</button>
+
+  <div id="result">
+    <div id="status"></div>
+    <div id="confidence"></div>
+    <div id="extra-metrics" style="display:none;"></div>
+    <div id="reason" style="display:none;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
